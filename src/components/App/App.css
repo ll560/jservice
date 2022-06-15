@@ -1,0 +1,24 @@
+*{
+  background-color: #42454d;
+}
+
+#submit{
+  background-color:red;
+
+}
+#increase{
+  margin: 5px;
+}
+
+#decrease{
+  margin: 20px;
+}
+#rest{
+  margin: 20px;
+}
+
+.App {
+  text-align: center;
+}
+
+
