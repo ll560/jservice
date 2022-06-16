@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { useState } from 'react';
-import Question from '../Question/Question'
+import Question from '../Question/Question';
 import './App.css';
+import Button from 'react-bootstrap/Button'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   //create state
@@ -33,16 +35,20 @@ function App() {
        <h2>Let's Play!</h2>
        
       <form onSubmit={handleChange}>
-      <button type='submit' id="submit">Get Random Trivia Question</button>
+      <Button type='submit' id="submit">Get Random Trivia Question</Button>
       
       </form>
       <Question jserviceRandom={jserviceRandom}></Question>
-      {toggled && <div><p>{jservice[0].answer}</p></div>}
-     <button onMouseOver={() => toggle( toggled => !toggled) }>Show answer</button>
-     
+
+      <div>
+        {jservice.length> 0 ? <div>{toggled && <div><p>{jservice[0].answer}</p></div>}
+     <button onMouseOver={() => toggle( toggled => !toggled) }>Show answer</button></div> : " "}
+      
+     </div>
 
     </div>
   );
 }
 
 export default App;
+

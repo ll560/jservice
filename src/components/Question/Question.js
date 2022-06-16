@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-
+import Button from 'react-bootstrap/Button'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function Question({ jserviceRandom }) {
   console.log(jserviceRandom)
@@ -13,11 +14,11 @@ function Question({ jserviceRandom }) {
       { jserviceRandom.length>0  ? 
       <h2>Score: {count} </h2>: "" }
       </div>
-     
-      <button onClick={ () => setCount(count +1 )} type="button" id="increase">Increase</button>
+        
+      <Button onClick={ () => setCount(count + jserviceRandom[0].value )}  type="button" className="btn btn-success">Increase</Button>
 
-      <button onClick={ () => setCount(count -1 )} disabled={count === 0} type="button" id="decrease">Decrease</button>
-      <button onClick={ () => setCount(0 )} type="button" id="reset">Reset</button>
+      <Button onClick={ () => setCount(count - jserviceRandom[0].value )} disabled={count === 0} type="button" className="btn btn-warning" id="decrease">Decrease</Button>
+      <Button onClick={ () => setCount(0 )} type="button" className="btn btn-danger"id="reset">Reset</Button>
 
       <div>
         {
