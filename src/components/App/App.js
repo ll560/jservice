@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { useState } from 'react';
-import Question from '../Score/Question'
+import Question from '../Question/Question'
 import './App.css';
 
 function App() {
   //create state
   const [jservice, setJservice] = useState('')
+  const [toggled, toggle] = useState(false)
   //create a state a for question info
-
   const [jserviceRandom, setJserviceRandom] = useState({})
 
   const handleChange = async (e)=> {
@@ -19,10 +19,12 @@ function App() {
     const response = await axios.get(baseURL+query)
     console.log(response.data)
     setJserviceRandom(response.data)
+    setJservice(response.data)
   }catch (e){
   console.log(e)
   }
 }
+
 
   return (
     <div className="App">
@@ -35,8 +37,10 @@ function App() {
       
       </form>
       <Question jserviceRandom={jserviceRandom}></Question>
-      {/*Child of App.js*/}
+      {toggled && <div><p>{jservice[0].answer}</p></div>}
+     <button onMouseOver={() => toggle( toggled => !toggled) }>Show answer</button>
      
+
     </div>
   );
 }
