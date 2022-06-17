@@ -29,10 +29,10 @@ function App() {
 
 
   return (
-    <div className="App">
-      <h1>Welcome to Jeopardy!</h1>
+    <div className="card " style={{width: "auto", height: "auto", margin: 40, textAlign: 'center'}}>
+      <h1 className="card-title mb-0">Welcome to Jeopardy!</h1>
        
-       <h2>Let's Play!</h2>
+       <h2 className='mb-0'>Let's Play!</h2>
        
       <form onSubmit={handleChange}>
       <Button type='submit' id="submit">Get Random Trivia Question</Button>
@@ -40,9 +40,9 @@ function App() {
       </form>
       <Question jserviceRandom={jserviceRandom}></Question>
 
-      <div>
-        {jservice.length> 0 ? <div>{toggled && <div><p>{jservice[0].answer}</p></div>}
-     <button onMouseOver={() => toggle( toggled => !toggled) }>Show answer</button></div> : " "}
+      <div >
+        {jservice.length> 0 ? <div >{toggled && <div><p>{jservice[0].answer.replace(/<\/?[^>]+(>|$)/g, '')}</p></div>}
+     <Button onClick={() => toggle( toggled => !toggled)}>Show answer</Button></div> : " "}
       
      </div>
 
